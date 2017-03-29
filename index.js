@@ -20,14 +20,12 @@ client.on('message', message => {
 		return;	
 	}
 	if(message.channel.type == 'dm'){
-		message.reply('lala');	
-		if (message.content === '!blague') {
+		if (message.content == '!blague') {
 			repBlague(message);
 		}
 	}
 	if(message.mentions.users.get(client.user.id)){
-		message.reply('chill');	
-		if (message.content === '!blague') {
+		if (message.content == '!blague') {
 			repBlague(message);
 		}
 	}

@@ -39,6 +39,9 @@ client.on('message', message => {
 				message.reply(fact);
 			});
 		}
+		getMeteo(content,function(meteo){
+			message.reply(meteo);
+		});
 	}
 
 });

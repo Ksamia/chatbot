@@ -4,6 +4,8 @@ const client = new Discord.Client();
 
 const getBlague = require('./blague.js');
 
+const getMeteo = require('./meteo.js');
+
 var express = require('express');
 
 var app = express();
@@ -22,6 +24,13 @@ client.on('message', message => {
 	}
 	if(message.channel.type == 'dm'){
 		if (message.content == '!blague') {
+			getBlague(function(fact){
+				message.reply(fact);
+			});
+		}
+		var content = message.content.split(" ");
+		console.log(content);
+		if (message.content == '!meteo ') {
 			getBlague(function(fact){
 				message.reply(fact);
 			});

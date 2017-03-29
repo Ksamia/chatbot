@@ -16,7 +16,7 @@ client.on('message', message => {
 client.on('presenceUpdate', function(oldMember, newMember) {
 	console.log(oldMember.presence, '=>', newMember.presence);
 	console.log('newmember username :',newMember.user.username);
-	if((newMember.user.username == "bramas" || newMember.user.username == "sall") ){
+	if((newMember.user.username == "bramas" || newMember.user.username == "sall")&& ((newMember.presence == "online"))){
 		newMember.sendMessage("Bonjour maitre, je suis le bot de Samia et de Coumba. Que puis-je faire pour vous aujourd\'hui ?");
 	}
 });

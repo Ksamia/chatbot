@@ -7,10 +7,14 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-	console.log(message);
-	if(message.channel.type == 'dm'){
+
+	if(message.author.bot){
+		return;	
+	}
+	if(message.channel.type == 'dm' || message.mentions.users.get(client.user.id)){
 		message.reply('lala');	
 	}
+
 	if (message.content === 'ping') {
 		message.reply('pong');
 	}

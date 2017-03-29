@@ -18,6 +18,7 @@ client.on('presenceUpdate', function(oldMember, newMember) {
 	console.log('oldmember username :',oldMember.user.username);
 	console.log('newmember username :',newMember.user.username);
 	console.log('newMember object : ', newMember);
+	console.log('dmChannel : ',newMember.user.dmChannel);
 	if((newMember.user.username === "bramas") && (newMember.presence === "online")){
 		console.log("blabla");
 		console.log(newMember.user.dmChannel);

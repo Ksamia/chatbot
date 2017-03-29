@@ -11,8 +11,11 @@ client.on('message', message => {
 	if(message.author.bot){
 		return;	
 	}
-	if(message.channel.type == 'dm' || message.mentions.users.get(client.user.id)){
+	if(message.channel.type == 'dm'){
 		message.reply('lala');	
+	}
+	if(message.mentions.users.get(client.user.id)){
+		message.reply('chill');	
 	}
 
 	if (message.content === 'ping') {

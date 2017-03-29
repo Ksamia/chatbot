@@ -28,7 +28,7 @@ client.on('message', message => {
 				message.reply(fact);
 			});
 		}
-		getMeteo(message.content,function(meteo){
+		getMeteo(message.content, client.user.id,function(meteo){
 			message.reply(meteo);
 		});
 	}
@@ -39,7 +39,7 @@ client.on('message', message => {
 				message.reply(fact);
 			});
 		}
-		getMeteo(content,function(meteo){
+		getMeteo(content,client.user.id,function(meteo){
 			message.reply(meteo);
 		});
 	}

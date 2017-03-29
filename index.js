@@ -44,7 +44,7 @@ client.on('message', message => {
 	}
 
 	if(message.mentions.users.get(client.user.id)){
-		var content = message.content.replace('<@'+client.user.id+'>','');
+		var content = message.content.replace('<@'+client.user.id+'>','').trim();
 		var msg = content.split(" ");
 		console.log(msg);
 		if (msg[0].trim() == '!blague') {

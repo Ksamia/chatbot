@@ -20,6 +20,7 @@ client.on('message', message => {
 		}
 	}
 	if(message.mentions.users.get(client.user.id)){
+		console.log(message.content);
 		if (message.content == '!blague') {
 			getBlague(function(fact){
 				message.reply(fact);

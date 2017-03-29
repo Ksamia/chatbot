@@ -22,26 +22,46 @@ client.on('message', message => {
 	if(message.author.bot){
 		return;	
 	}
+	
 	if(message.channel.type == 'dm'){
-		if (message.content == '!blague') {
+		var content = message.content.split(" ");
+		if (content[0].trim() == '!blague') {
 			getBlague(function(fact){
 				message.reply(fact);
 			});
+		}else if(content[0].trim() == '!meteo'){
+			if(content.length < 2){
+				message.reply('Message incompris');
+			}else{
+				var city = message.content.replace('!meteo','').trim();	
+				getMeteo(city, client.user.id,function(meteo){
+					message.reply(meteo);
+				});
+			}
+		}else{
+			message.reply('Message incompris');
 		}
-		getMeteo(message.content, client.user.id,function(meteo){
-			message.reply(meteo);
-		});
 	}
+
 	if(message.mentions.users.get(client.user.id)){
-		var content = message.content.replace('<@'+client.user.id+'>','').trim();
-		if (content == '!blague') {
+		var content = message.content.replace('<@'+client.user.id+'>','');
+		var msg = content.split(" ");
+		if (msg[0].trim() == '!blague') {
 			getBlague(function(fact){
 				message.reply(fact);
 			});
+		}else if(msg[0].trim() == '!meteo'){
+			if(msg.length < 2){
+				message.reply('Message incompris');
+			}else{
+				var city = content.replace('!meteo','').trim();	
+				getMeteo(city, client.user.id,function(meteo){
+					message.reply(meteo);
+				});
+			}
+		}else{
+			message.reply('Message incompris');
 		}
-		getMeteo(content,client.user.id,function(meteo){
-			message.reply(meteo);
-		});
 	}
 
 });

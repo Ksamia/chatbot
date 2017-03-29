@@ -4,7 +4,6 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
 	console.log('I am ready!');
-	console.log('presence : '+userBramas.presence);
 });
 
 client.on('message', message => {

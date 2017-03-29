@@ -9,9 +9,9 @@ client.on('ready', () => {
 });
 
 function repBlague(msg){
-	axios.get('chucknorrisfacts.fr/api/get?data=tri:alea;nb:1').then(function(rep){
-		console.log(rep.data);
-		msg.reply(rep.data);
+	axios.get('https://www.chucknorrisfacts.fr/api/get?data=tri:alea;nb:1').then(function(rep){
+		console.log(rep.data[0]);
+		msg.reply(rep.data[0]);
 	});
 }
 

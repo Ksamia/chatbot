@@ -7,6 +7,10 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+	console.log(message);
+	if(message.channel.type == 'dm'){
+		message.reply('lala');	
+	}
 	if (message.content === 'ping') {
 		message.reply('pong');
 	}

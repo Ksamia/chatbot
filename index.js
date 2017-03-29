@@ -27,6 +27,8 @@ client.on('message', message => {
 			getBlague(function(fact){
 				message.reply(fact);
 			});
+		}else{
+			message.reply("Message incompris");
 		}
 		getMeteo(message.content,function(meteo){
 			message.reply(meteo);

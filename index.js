@@ -28,13 +28,9 @@ client.on('message', message => {
 				message.reply(fact);
 			});
 		}
-		var content = message.content.split(" ");
-		console.log(content);
-		if (message.content == '!meteo ') {
-			getBlague(function(fact){
-				message.reply(fact);
-			});
-		}
+		getMeteo(message.content,function(meteo){
+			message.reply(meteo);
+		});
 	}
 	if(message.mentions.users.get(client.user.id)){
 		var content = message.content.replace('<@'+client.user.id+'>','').trim();

@@ -3,8 +3,7 @@ const axios = require('axios');
 module.exports = function(msg, callback){
 	var content = msg.split(" ");
 	if(content[0].trim() == '!meteo'){
-		console.log(content.length);
-		if(content.length > 2){
+		if(content.length != 2){
 			callback('Message incompris');
 			return;
 		}

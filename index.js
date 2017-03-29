@@ -2,18 +2,11 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
-const axios = require('axios');
+const getBlague = require('./blague.js');
 
 client.on('ready', () => {
 	console.log('I am ready!');
 });
-
-function repBlague(msg){
-	axios.get('https://www.chucknorrisfacts.fr/api/get?data=tri:alea;nb:1').then(function(rep){
-		console.log(rep.data[0]);
-		msg.reply(rep.data[0]);
-	});
-}
 
 client.on('message', message => {
 	if(message.author.bot){
@@ -21,12 +14,16 @@ client.on('message', message => {
 	}
 	if(message.channel.type == 'dm'){
 		if (message.content == '!blague') {
-			repBlague(message);
+			getBlague(function(fact){
+				message.reply(fact);
+			});
 		}
 	}
 	if(message.mentions.users.get(client.user.id)){
 		if (message.content == '!blague') {
-			repBlague(message);
+			getBlague(function(fact){
+				message.reply(fact);
+			});
 		}
 	}
 

@@ -72,7 +72,17 @@ client.on('message', message => {
 					message.reply(meteo);
 				});
 			}
-		}else{
+		}else if(content[0].trim() == '!image'){
+			if(content.length < 2){
+				message.reply('Message incompris');
+			}else{
+				var theme = message.content.replace('!image','').trim();	
+				getImage(theme, function(imageLink){
+					message.reply(imageLink);
+				});
+			} 
+		}
+		else{
 			message.reply('Message incompris');
 		}
 	}

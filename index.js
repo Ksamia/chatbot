@@ -45,7 +45,9 @@ client.on('message', message => {
 				message.reply('Message incompris');
 			}else{
 				var theme = message.content.replace('!image','').trim();	
-				getImage(theme, console.log);
+				getImage(theme, function(imageLink){
+					message.reply(imageLink);
+				});
 			} 
 		}
 		else{

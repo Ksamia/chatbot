@@ -8,6 +8,8 @@ const getMeteo = require('./meteo.js');
 
 var getImage = require('./image.js');
 
+var getIss = require('./iss.js');
+
 var express = require('express');
 
 var app = express();
@@ -49,6 +51,10 @@ client.on('message', message => {
 					message.reply(imageLink);
 				});
 			} 
+		}else if(content[0].trim() == '!iss'){
+			getIss(function(issImage){
+				message.reply(issImage);
+			});
 		}
 		else{
 			message.reply('Message incompris');

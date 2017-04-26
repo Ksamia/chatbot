@@ -14,7 +14,7 @@ function getCoordinate(){
 module.exports = function(callback){
 	axios.get('http://staticmap.openstreetmap.de/staticmap.php?center='+coordinates.lat+','+coordinates.long+'&zoom=5size=400x300&maptype=mapnik&markers='+coordinates.lat+','+coordinates.long+'ltblu-pushpin')
 		.then(function(rep){
-			callback(forecast);
+			callback(rep);
 		}).catch(console.error);
 	
 };

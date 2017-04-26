@@ -72,7 +72,7 @@ client.on('message', message => {
 					message.reply(meteo);
 				});
 			}
-		}else if(content[0].trim() == '!image'){
+		}else if(msg[0].trim() == '!image'){
 			if(content.length < 2){
 				message.reply('Message incompris');
 			}else{

@@ -53,7 +53,7 @@ client.on('message', message => {
 			} 
 		}else if(content[0].trim() == '!iss'){
 			getIss(function(issImage){
-				message.reply(issImage);
+				console.log(issImage);
 			});
 		}
 		else{

@@ -4,4 +4,8 @@ var b = require('./blague');
 
 var meteo = require('./meteo.js');
 
-meteo('Paris',console.log)
+var image = require('./image.js');
+
+//meteo('Paris',console.log);
+
+image('dog',console.log);

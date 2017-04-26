@@ -6,6 +6,8 @@ const getBlague = require('./blague.js');
 
 const getMeteo = require('./meteo.js');
 
+var getImage = require('./image.js');
+
 var express = require('express');
 
 var app = express();
@@ -38,7 +40,15 @@ client.on('message', message => {
 					message.reply(meteo);
 				});
 			}
-		}else{
+		}else if(content[0].trim() == '!image'){
+			if(content.length < 2){
+				message.reply('Message incompris');
+			}else{
+				var theme = message.content.replace('!image','').trim();	
+				getImage(theme, console.log});
+			} 
+		}
+		else{
 			message.reply('Message incompris');
 		}
 	}

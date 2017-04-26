@@ -30,12 +30,13 @@ function getImage(){
 		.catch(console.error);
 }
 
-module.exports = function(callback){
+module.exports = function(){
 	axios.get('http://staticmap.openstreetmap.de/staticmap.php?center=40.465476578251,68.987902965651&zoom=5size=400x300&maptype=mapnik&markers=40.465476578251,68.987902965651ltblu-pushpin')
 		.then(function(rep){
-			sharp(rep)
-				.overlayWith('https://i.downloadatoz.com/download/icon2/c/9/5/e3c8de70b0e1170c327696c64c8bc59c.jpg', { top:40.465476578251, left:68.987902965651} )
-				.png
+			//console.log(rep.data)
+			sharp(rep.data)
+				.overlayWith('https://i.downloadatoz.com/download/icon2/c/9/5/e3c8de70b0e1170c327696c64c8bc59c.jpg', { top:40, left:68} )
+				.webp
 			  	.toBuffer()
 				.then(function(buff){
 					console.log(buff);

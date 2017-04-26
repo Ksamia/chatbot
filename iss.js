@@ -30,11 +30,17 @@ function getImage(){
 		.catch(console.error);
 }
 
-module.exports = function(){
-	axios.get(coordinates.img)
+module.exports = function(callback){
+	axios.get('http://staticmap.openstreetmap.de/staticmap.php?center=40.465476578251,68.987902965651&zoom=5size=400x300&maptype=mapnik&markers=40.465476578251,68.987902965651ltblu-pushpin')
 		.then(function(rep){
-			var imageBuffer = new Buffer(rep, 'base64');
-			fs.writeFile("test.jpg", imageBuffer, function(err) { console.log('error');});
+			sharp(rep)
+				.overlayWith('https://i.downloadatoz.com/download/icon2/c/9/5/e3c8de70b0e1170c327696c64c8bc59c.jpg', { top:coordinates.latitude, left:coordinates.longitude } )
+				.png
+			  	.toBuffer()
+				.then(function(buff){
+					callback(buff);
+				});
+			
 		})
 	}
 	

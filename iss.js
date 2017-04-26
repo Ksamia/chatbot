@@ -39,6 +39,7 @@ module.exports = function(callback){
 			  	.toBuffer()
 				.then(function(buff){
 					console.log(buff);
+					console.log('lal')
 				});
 			
 		})

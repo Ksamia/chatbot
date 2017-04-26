@@ -6,9 +6,9 @@ module.exports = function(callback){
 	axios.get('https://api.wheretheiss.at/v1/satellites/25544')
 		.then(function(rep){
 			console.log(rep.data.latitude);
-			//coordinates.long = rep.longitude;
-			//coordinates.lat = rep.latitude;
-			//coordinates.img = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.latitude+','+rep.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.latitude+','+rep.longitude+'ltblu-pushpin';
+			coordinates.long = rep.data.longitude;
+			coordinates.lat = rep.data.latitude;
+			coordinates.img = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';
 			callback(JSON.stringify(coordinates));
 		})
 		.catch(console.error);

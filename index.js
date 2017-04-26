@@ -53,7 +53,7 @@ client.on('message', message => {
 			} 
 		}else if(content[0].trim() == '!iss'){
 			getIss(function(issImage){
-				console.log(issImage);
+				message.reply(issImage);
 			});
 		}
 		else{
@@ -87,6 +87,10 @@ client.on('message', message => {
 					message.reply(imageLink);
 				});
 			} 
+		}else if(msg[0].trim() == '!iss'){
+			getIss(function(issImage){
+				message.reply(issImage);
+			});
 		}
 		else{
 			message.reply('Message incompris');

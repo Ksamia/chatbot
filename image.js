@@ -5,7 +5,7 @@ module.exports = function(searchString,callback){
 		.then(function(rep){
 			//console.log(rep);
 			//var forecast = "name : "+rep.data.city.name+", temperature : "+rep.data.list[0].temp.day+", weather : "+rep.data.list[0].weather[0].description;
-			callback(rep.data.data[]);
+			callback(rep.data.data[0]);
 		})
 	
 };

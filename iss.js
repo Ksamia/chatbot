@@ -16,7 +16,7 @@ module.exports = function(callback){
 			//callback(JSON.stringify(coordinates));
 			axios.get(coordinates.img,{ responseType:"arraybuffer" })
 			.then(function(rep){
-				console.log(rep.data)
+				//console.log(rep.data)
 				sharp(rep.data)
 					.overlayWith('./satelite.jpg')
 					.png()

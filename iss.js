@@ -13,7 +13,20 @@ module.exports = function(callback){
 			coordinates.long = rep.data.longitude;
 			coordinates.lat = rep.data.latitude;
 			coordinates.img = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';
-			callback(JSON.stringify(coordinates));
+			//callback(JSON.stringify(coordinates));
+			axios.get(coordinates.img,{ responseType:"arraybuffer" })
+			.then(function(rep){
+				console.log(rep.data)
+				sharp(rep.data)
+					.overlayWith('./satelite.jpg')
+					.png()
+				  	.toBuffer()
+					.then(function(buff){
+						console.log(buff)
+						callback(buff)
+					}).catch(console.error);
+			
+			})
 		})
 		.catch(console.error);
 }

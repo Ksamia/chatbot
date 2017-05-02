@@ -20,10 +20,9 @@ module.exports = function(callback){
 				sharp(rep.data)
 					.overlayWith('./satelite.jpg')
 					.png()
-				  	.toBuffer(function(error, data, info){
-						console.log('toBuffer data')
-						console.log(data)	
-						callback(data)	
+					.then(function(output){
+						console.log('png output')
+						callback(output)
 					})
 					.catch(console.error);
 			

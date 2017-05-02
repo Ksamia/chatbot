@@ -20,11 +20,12 @@ module.exports = function(callback){
 				sharp(rep.data)
 					.overlayWith('./satelite.jpg')
 					.png()
-				  	.toBuffer()
-					.then(function(buff){
-						console.log(buff)
-						callback(buff)
-					}).catch(console.error);
+				  	.toBuffer(function(error, data, info){
+						console.log('toBuffer data')
+						console.log(data)	
+						callback(data)	
+					})
+					.catch(console.error);
 			
 			})
 		})

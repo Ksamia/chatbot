@@ -32,7 +32,7 @@ function getImage(){
 		.catch(console.error);
 }
 
-module.exports = function(callback){
+module.exports = function(){
 	axios.get('http://staticmap.openstreetmap.de/staticmap.php?center=40.465476578251,68.987902965651&zoom=5size=400x300&maptype=mapnik&format=png&markers=40.465476578251,68.987902965651ltblu-pushpin',{ responseType:"arraybuffer" })
 		.then(function(rep){
 			console.log(rep.data)
@@ -40,11 +40,11 @@ module.exports = function(callback){
 			sharp(rep.data)
 				.overlayWith('./satelite.jpg')
 				.png()
-			  	.toBuffer()
-				.then(function(buff){
-					console.log(buff)
-					callback(buff)
-				}).catch(console.error);
+			  	.toBuffer(function(error,data,info){
+					console.log('toBuffer data')
+					console.log(info)
+				})
+				.catch(console.error);
 			
 		})
 	}

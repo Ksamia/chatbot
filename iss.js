@@ -8,19 +8,19 @@ var coordinates = {long:0, lat:0, img:''};
 
 function composeImg(){
 	axios.get(coordinates.img,{ responseType:"arraybuffer" })
-			.then(function(rep){
+		.then(function(rep){
 				//console.log(rep.data)
-				sharp(rep.data)
-					.overlayWith('./satelite.jpg')
-					.png()
-					.toBuffer(function(error,data,info){
-						console.log('toBuffer data')
-						console.log(info)
-						///callback(data.toString('base64'))
-						return(data)
-					})
-					.catch(console.error)
-			})
+			sharp(rep.data)
+				.overlayWith('./satelite.jpg')
+				.png()
+				.toBuffer(function(error,data,info){
+					console.log('toBuffer data')
+					console.log(info)
+					///callback(data.toString('base64'))
+					return(data)
+				})
+				.catch(console.error)
+		})
 }
 
 module.exports = function(callback){

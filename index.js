@@ -53,12 +53,8 @@ client.on('message', message => {
 			} 
 		}else if(content[0].trim() == '!iss'){
 			console.log('index.js if iss condition');
-			getIss(function(issImage){
-				console.log('index.js getIss function');
-				var imageIss = getIss.getImgLink();
-				console.log(imageIss);
-				//message.reply(issImage);
-			});
+			var imageIss = getIss.getImgLink();
+			console.log(imageIss);
 		}
 		else{
 			message.reply('Message incompris');

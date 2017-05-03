@@ -14,26 +14,34 @@ module.exports.getImgLink = function getImgLink(callback){
 			coordinates.lat = rep.data.latitude;
 			coordinates.img = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';
 			callback(coordinates.img);
+			axios.get(coordinates.img,{ responseType:"arraybuffer" })
+				.then(function(rep){
+					sharp(rep.data)
+						.overlayWith('./satelite.jpg')
+						.png()
+						.toBuffer()
+						.then(function(output){
+							callback(output);
+						})
+						.catch(console.error)
+				}).catch(console.error);
 		})
 		.catch(console.error);
-
-	
 }
 
-module.exports.Compose = function Compose(callback){
-	//console.log('iss.js compose function');
+
+
+/*module.exports.Compose = function Compose(callback){
 	console.log('coordinates.img '+coordinates.img);
 	axios.get('http://staticmap.openstreetmap.de/staticmap.php?center=40.465476578251,68.987902965651&zoom=5size=400x300&maptype=mapnik&format=png&markers=40.465476578251,68.987902965651ltblu-pushpin',{ responseType:"arraybuffer" })
 		.then(function(rep){
-			//console.log('iss.js in compose axios.get');
 			sharp(rep.data)
 				.overlayWith('./satelite.jpg')
 				.png()
 				.toBuffer()
 				.then(function(output){
-					//console.log('sharp then output '+output)
 					callback(output);
 				})
 				.catch(console.error)
 		}).catch(console.error);
-}
+}*/

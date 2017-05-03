@@ -21,6 +21,7 @@ function getISS(){
 module.exports = function(callback){
 	getISS();
 	console.log('iss.js module.export before axios.get');
+	console.log(coordinates.img)
 	axios.get(coordinates.img,{ responseType:"arraybuffer" })
 		.then(function(rep){
 			console.log('iss.js in axios.get');

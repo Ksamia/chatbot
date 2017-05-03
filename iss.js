@@ -19,9 +19,8 @@ module.exports.getImgLink = function getImgLink(callback){
 					sharp(rep.data)
 						.overlayWith('./satelite.jpg')
 						.png()
-						.toBuffer()
-						.then(function(output){
-							callback(output);
+						.toBuffer(function(error, data, info){
+							callback(data);				
 						})
 						.catch(console.error)
 				}).catch(console.error);

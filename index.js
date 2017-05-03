@@ -14,6 +14,8 @@ var express = require('express');
 
 var app = express();
 
+var imgLink;
+
 app.get('/', function(req, res){
 	res.send('hello world !!! ');
 });
@@ -53,8 +55,8 @@ client.on('message', message => {
 			} 
 		}else if(content[0].trim() == '!iss'){
 			console.log('index.js if iss condition');
-			getIss.getImgLink(console.log);
-			//console.log(imageIss);
+			getIss.getImgLink(imgLink);
+			console.log(imgLink);
 		}
 		else{
 			message.reply('Message incompris');

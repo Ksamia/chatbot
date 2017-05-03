@@ -55,9 +55,7 @@ client.on('message', message => {
 			} 
 		}else if(content[0].trim() == '!iss'){
 			console.log('index.js if iss condition');
-			getIss.getImgLink(function(imagebuff){
-				message.reply(imagebuff);
-			});
+			getIss.getImgLink(console.log);
 			//console.log('display compose return value');
 			//getIss.Compose(console.log);
 		}

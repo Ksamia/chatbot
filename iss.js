@@ -27,7 +27,7 @@ module.exports = function(callback){
 				.toBuffer(function(error,data,info){
 					console.log('toBuffer data')
 					console.log(info)
-					callback(data.toString('base64'))
+					callback(data)
 			
 				})
 				.catch(console.error)

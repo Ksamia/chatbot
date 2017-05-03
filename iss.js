@@ -7,11 +7,11 @@ const fs = require('fs');
 var coordinates = {long:0, lat:0, img:''};
 
 module.exports.Compose = function Compose(callback){
-	console.log('iss.js compose function');
-	console.log(coordinates.img);
+	//console.log('iss.js compose function');
+	console.log('coordinates.img '+coordinates.img);
 	axios.get('http://staticmap.openstreetmap.de/staticmap.php?center=40.465476578251,68.987902965651&zoom=5size=400x300&maptype=mapnik&format=png&markers=40.465476578251,68.987902965651ltblu-pushpin',{ responseType:"arraybuffer" })
 		.then(function(rep){
-			console.log('iss.js in compose axios.get');
+			//console.log('iss.js in compose axios.get');
 			sharp(rep.data)
 				.overlayWith('./satelite.jpg')
 				.png()
@@ -21,7 +21,7 @@ module.exports.Compose = function Compose(callback){
 					callback(output);
 				})
 				.catch(console.error)
-		})
+		}).catch(console.error);
 }
 
 module.exports.getImgLink = function getImgLink(callback){

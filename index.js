@@ -57,9 +57,7 @@ client.on('message', message => {
 			console.log('index.js if iss condition');
 			getIss.getImgLink(console.log);
 			console.log('display compose return value');
-			getIss.Compose(function(image){
-				message.reply(image);
-			});
+			getIss.Compose(console.log);
 		}
 		else{
 			message.reply('Message incompris');

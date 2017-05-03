@@ -58,7 +58,7 @@ client.on('message', message => {
 			getIss.getImgLink(function(imagebuff){
 				console.log(imagebuff);
 				console.log(message);
-				message.author.sendFile(message, 'http://i.imgur.com/6CbxaPc.jpg', 'kappa.jpg', 'Check out this cool file!', (err, m) => {
+				message.author.sendFile(message.channel.id, 'http://i.imgur.com/6CbxaPc.jpg', 'kappa.jpg', 'Check out this cool file!', (err, m) => {
            				if (err) console.log(err);
        					 });
 			});

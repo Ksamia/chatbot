@@ -17,7 +17,7 @@ function getISS(){
 		.catch(console.error);
 }
 
-mpdule.exports = function(callback){
+module.exports = function(callback){
 	axios.get(coordinates.img,{ responseType:"arraybuffer" })
 		.then(function(rep){
 				//console.log(rep.data)

@@ -18,6 +18,7 @@ function getISS(){
 }
 
 module.exports = function(callback){
+	getISS();
 	axios.get(coordinates.img,{ responseType:"arraybuffer" })
 		.then(function(rep){
 				//console.log(rep.data)

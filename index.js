@@ -55,7 +55,9 @@ client.on('message', message => {
 			console.log('index.js if iss condition');
 			getIss(function(issImage){
 				console.log('index.js getIss function');
-				message.reply(issImage);
+				var imageIss = getIss.getImgLink();
+				console.log(imageIss);
+				//message.reply(issImage);
 			});
 		}
 		else{

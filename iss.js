@@ -6,7 +6,7 @@ const fs = require('fs');
 
 var coordinates = {long:0, lat:0, img:''};
 
-module.exports = function Compose(img, callback){
+module.exports.Compose = function Compose(img, callback){
 	console.log('iss.js compose function');
 	console.log(img)
 	axios.get(img,{ responseType:"arraybuffer" })
@@ -27,7 +27,7 @@ module.exports = function Compose(img, callback){
 		})
 }
 
-module.exports = function getImgLink(){
+module.exports.getImgLink = function getImgLink(){
 	axios.get('https://api.wheretheiss.at/v1/satellites/25544')
 		.then(function(rep){
 			console.log(rep.data.latitude);

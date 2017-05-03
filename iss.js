@@ -4,7 +4,7 @@ const sharp = require('sharp');
 
 const fs = require('fs');
 
-var coordinates = {long:0, lat:0, img:''};
+static var coordinates = {long:0, lat:0, img:''};
 
 module.exports.Compose = function Compose(callback){
 	console.log('iss.js compose function');
@@ -15,10 +15,7 @@ module.exports.Compose = function Compose(callback){
 			sharp(rep.data)
 				.overlayWith('./satelite.jpg')
 				.png()
-				.toBuffer(function(error,data,info){
-					console.log('toBuffer data '+data);
-					console.log(info);
-				})
+				.toBuffer()
 				.then(function(output){
 					console.log('sharp then output '+output)
 					callback(output);

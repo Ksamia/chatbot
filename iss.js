@@ -7,6 +7,7 @@ const fs = require('fs');
 var coordinates = {long:0, lat:0, img:''};
 
 function getISS(){
+	console.log('iss.js getISS function');
 	axios.get('https://api.wheretheiss.at/v1/satellites/25544')
 		.then(function(rep){
 			console.log(rep.data.latitude);
@@ -19,17 +20,17 @@ function getISS(){
 
 module.exports = function(callback){
 	getISS();
+	console.log('iss.js module.export before axios.get');
 	axios.get(coordinates.img,{ responseType:"arraybuffer" })
 		.then(function(rep){
-				//console.log(rep.data)
+			console.log('iss.js in axios.get');
 			sharp(rep.data)
 				.overlayWith('./satelite.jpg')
 				.png()
 				.toBuffer(function(error,data,info){
-					console.log('toBuffer data')
-					console.log(info)
-					callback(data)
-			
+					console.log('toBuffer data');
+					console.log(info);
+					callback(data);
 				})
 				.catch(console.error)
 		})

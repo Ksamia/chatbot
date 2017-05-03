@@ -52,7 +52,9 @@ client.on('message', message => {
 				});
 			} 
 		}else if(content[0].trim() == '!iss'){
+			console.log('index.js if iss condition');
 			getIss(function(issImage){
+				console.log('index.js getIss function');
 				message.reply(issImage);
 			});
 		}

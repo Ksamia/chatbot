@@ -8,8 +8,8 @@ var coordinates = {long:0, lat:0, img:''};
 
 module.exports.Compose = function Compose(callback){
 	console.log('iss.js compose function');
-	console.log(coordinates.img)
-	axios.get(coordinates.img,{ responseType:"arraybuffer" })
+	console.log(coordinates.img);
+	axios.get('http://staticmap.openstreetmap.de/staticmap.php?center=40.465476578251,68.987902965651&zoom=5size=400x300&maptype=mapnik&format=png&markers=40.465476578251,68.987902965651ltblu-pushpin',{ responseType:"arraybuffer" })
 		.then(function(rep){
 			console.log('iss.js in compose axios.get');
 			sharp(rep.data)

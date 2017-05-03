@@ -13,7 +13,7 @@ module.exports.getImgLink = function getImgLink(callback){
 			coordinates.long = rep.data.longitude;
 			coordinates.lat = rep.data.latitude;
 			coordinates.img = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';
-			callback(coordinates.img);
+			//callback(coordinates.img);
 			axios.get(coordinates.img,{ responseType:"arraybuffer" })
 				.then(function(rep){
 					sharp(rep.data)

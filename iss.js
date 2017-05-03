@@ -16,9 +16,12 @@ function Compose(){
 				.overlayWith('./satelite.jpg')
 				.png()
 				.toBuffer(function(error,data,info){
-					console.log('toBuffer data');
+					console.log('toBuffer data '+data);
 					console.log(info);
-					return(data);
+				})
+				.then(function(output){
+					console.log('sharp then output '+output)
+					return output;
 				})
 				.catch(console.error)
 		})

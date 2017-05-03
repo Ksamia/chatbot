@@ -6,6 +6,20 @@ const fs = require('fs');
 
 const coordinates = {long:0, lat:0, img:''};
 
+module.exports.getImgLink = function getImgLink(callback){
+	axios.get('https://api.wheretheiss.at/v1/satellites/25544')
+		.then(function(rep){
+			console.log(rep.data.latitude);
+			coordinates.long = rep.data.longitude;
+			coordinates.lat = rep.data.latitude;
+			coordinates.img = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';
+			callback(coordinates.img);
+		})
+		.catch(console.error);
+
+	
+}
+
 module.exports.Compose = function Compose(callback){
 	//console.log('iss.js compose function');
 	console.log('coordinates.img '+coordinates.img);
@@ -23,18 +37,3 @@ module.exports.Compose = function Compose(callback){
 				.catch(console.error)
 		}).catch(console.error);
 }
-
-module.exports.getImgLink = function getImgLink(callback){
-	axios.get('https://api.wheretheiss.at/v1/satellites/25544')
-		.then(function(rep){
-			console.log(rep.data.latitude);
-			coordinates.long = rep.data.longitude;
-			coordinates.lat = rep.data.latitude;
-			coordinates.img = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';
-			callback(coordinates.img);
-		})
-		.catch(console.error);
-
-	
-}
-

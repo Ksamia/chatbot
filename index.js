@@ -56,7 +56,7 @@ client.on('message', message => {
 		}else if(content[0].trim() == '!iss'){
 			console.log('index.js if iss condition');
 			getIss.getImgLink(function(imagebuff){
-				console.log(imagebuff);
+				console.log(imagebuff.options);
 				message.author.sendFile(message, imagebuff,'iss.png','Satellite Position');
 			});
 			//console.log('display compose return value');

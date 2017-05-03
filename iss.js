@@ -4,7 +4,7 @@ const sharp = require('sharp');
 
 const fs = require('fs');
 
-static coordinates = {long:0, lat:0, img:''};
+var coordinates = {long:0, lat:0, img:''};
 
 module.exports.Compose = function Compose(callback){
 	console.log('iss.js compose function');
@@ -17,7 +17,7 @@ module.exports.Compose = function Compose(callback){
 				.png()
 				.toBuffer()
 				.then(function(output){
-					console.log('sharp then output '+output)
+					//console.log('sharp then output '+output)
 					callback(output);
 				})
 				.catch(console.error)

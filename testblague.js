@@ -8,4 +8,7 @@ var iss = require('./iss.js');
 
 var iss2 = require('./iss_bck.js');
 
-iss2();
+console.log('index.js if iss condition');
+iss.getImgLink(console.log);
+console.log('display compose return value');
+iss.Compose(console.log);

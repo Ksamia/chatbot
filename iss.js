@@ -16,13 +16,14 @@ module.exports.getImgLink = function getImgLink(callback){
 			//callback(coordinates.img);
 			axios.get(coordinates.img,{ responseType:"arraybuffer" })
 				.then(function(rep){
-					sharp(rep.data)
-						.overlayWith('./satelite.jpg')
-						.toBuffer()
+					var buff_image = sharp(rep.data)
+						.overlayWith('./satelite.jpg');
+						/*.toBuffer()
 						.then(function(output){
 							callback(output);
 						})
-						.catch(console.error)
+						.catch(console.error)*/
+						callback(buff_image);
 				}).catch(console.error);
 		})
 		.catch(console.error);

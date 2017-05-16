@@ -12,7 +12,7 @@ var overlayImg;
 
 axios.get("http://www.clker.com/cliparts/4/a/3/6/13673152381260660812free-global-security-satellite-th.png", {responseType:"arraybuffer"})
 	.then(function(rep){
-		overlayImg = rep.data;
+		overlayImg = rep;
 	}).catch(console.error);
 
 
@@ -27,9 +27,8 @@ module.exports.getImgLink = function getImgLink(callback){
 			axios.get(coordinates.img,{ responseType:"arraybuffer" })
 				.then(function(rep){
 					console.log("overlayImg buffer : "+ overlayImg);
-					var buff_image = sharp(rep.data)
-						.overlayWith(overlayImg);
-						callback(buff_image);
+					var buff_image = sharp(rep.data).overlayWith(overlayImg);
+					callback(buff_image);
 				}).catch(console.error);
 		})
 		.catch(console.error);

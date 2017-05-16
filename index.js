@@ -56,6 +56,7 @@ client.on('message', message => {
 		}else if(content[0].trim() == '!iss'){
 			console.log('index.js if iss condition');
 			getIss(function(imagebuff){
+				console.log(imagebuff)
 				message.author.sendFile(imagebuff.options.input.buffer,"png");
 			});
 		}

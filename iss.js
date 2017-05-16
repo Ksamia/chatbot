@@ -20,6 +20,7 @@ imgLink = function(){
 }
 
 module.exports = function(callback){
+	imgLink();
 	request.get(link, function (err, res, body) {
               sharp(body).overlayWith('./iss.png').toBuffer().then(function(buff){callback(buff)});
 		

@@ -94,8 +94,8 @@ client.on('message', message => {
 		}else if(msg[0].trim() == '!iss'){
 			getIss(function(issImage){
 				getIss(function(imagebuff){
-					//console.log(imagebuff)
-					message.author.sendFile(imagebuff,"png");
+					console.log(message)
+					message.channel.sendFile(imagebuff,"png");
 				});
 				message.reply(issImage);
 			});

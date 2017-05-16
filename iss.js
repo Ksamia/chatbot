@@ -26,8 +26,7 @@ module.exports.getImgLink = function getImgLink(callback){
 			
 			axios.get(coordinates.img,{ responseType:"arraybuffer" })
 				.then(function(rep){
-					console.log(overlayImg);
-					var buff_image = sharp(rep.data).resize(500).overlayWith('./iss.png');
+					var buff_image = sharp(rep.data).overlayWith('./iss.png');
 					callback(buff_image);
 				}).catch(console.error);
 		})

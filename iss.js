@@ -8,7 +8,7 @@ const coordinates = {long:0, lat:0, img:''};
 
 const overlay = "http://www.clker.com/cliparts/4/a/3/6/13673152381260660812free-global-security-satellite-th.png";
 
-const overlayImg;
+var overlayImg;
 
 axios.get("http://www.clker.com/cliparts/4/a/3/6/13673152381260660812free-global-security-satellite-th.png", {responseType:"arraybuffer"})
 	.then(function(rep){

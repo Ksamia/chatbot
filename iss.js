@@ -26,7 +26,7 @@ module.exports.getImgLink = function getImgLink(callback){
 			
 			axios.get(coordinates.img,{ responseType:"arraybuffer" })
 				.then(function(rep){
-					console.log("overlayImg buffer : "+ JSON.stringify(overlayImg));
+					console.log(overlayImg);
 					var buff_image = sharp(rep.data).overlayWith(overlayImg);
 					callback(buff_image);
 				}).catch(console.error);

@@ -6,7 +6,7 @@ var request = require('request').defaults({ encoding: null })
 
 var link;
 var outputImg;
-module.exports = function(){
+module.exports = function(callback){
 	axios.get('https://api.wheretheiss.at/v1/satellites/25544')
 		.then(function(rep){
 			var link = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';

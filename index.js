@@ -58,7 +58,7 @@ client.on('message', message => {
 			getIss.getImgLink(function(imagebuff){
 				//console.log("sendFile");
 				//console.log(message);
-				message.author.sendFile('./iss.png',"png");
+				message.author.sendFile(imagebuff.options.output.buffer,"png");
 			});
 			//console.log('display compose return value');
 			//getIss.Compose(console.log);

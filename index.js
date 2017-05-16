@@ -93,7 +93,7 @@ client.on('message', message => {
 			} 
 		}else if(msg[0].trim() == '!iss'){
 			getIss(function(imagebuff){
-				console.log(message)
+				//console.log(message)
 				message.channel.sendFile(imagebuff,"png");
 			});
 		}

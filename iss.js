@@ -12,8 +12,11 @@ module.exports = function(callback){
 			var link = 'http://staticmap.openstreetmap.de/staticmap.php?center='+rep.data.latitude+','+rep.data.longitude+'&zoom=5size=400x300&maptype=mapnik&markers='+rep.data.latitude+','+rep.data.longitude+'ltblu-pushpin';
 			axios.get(link,{ responseType:"arraybuffer" })
 				.then(function(rep){
-					sharp(rep.data).overlayWith('./iss.png').toBuffer().then(function(buff){callback(buff);});
-					//callback(buff_image);
+					sharp(rep.data).overlayWith('./iss.png')
+						.toBuffer()
+						.then(function(buff){
+							callback(buff);
+						});
 				}).catch(console.error);
 		})
 		.catch(console.error);

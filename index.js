@@ -54,9 +54,9 @@ client.on('message', message => {
 				});
 			} 
 		}else if(content[0].trim() == '!iss'){
-			console.log('index.js if iss condition');
+			//console.log('index.js if iss condition');
 			getIss(function(imagebuff){
-				console.log(imagebuff)
+				//console.log(imagebuff)
 				message.author.sendFile(imagebuff,"png");
 			});
 		}
@@ -93,6 +93,10 @@ client.on('message', message => {
 			} 
 		}else if(msg[0].trim() == '!iss'){
 			getIss(function(issImage){
+				getIss(function(imagebuff){
+					//console.log(imagebuff)
+					message.author.sendFile(imagebuff,"png");
+				});
 				message.reply(issImage);
 			});
 		}
